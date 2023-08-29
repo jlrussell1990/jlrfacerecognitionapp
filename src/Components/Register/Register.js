@@ -23,7 +23,7 @@ class Register extends React.Component {
   };
 
   onSubmitRegister = () => {
-    fetch('http://localhost:3000/register', {
+    fetch('https://jlrfacerecognitionapp-api-ef3d9411ffd4.herokuapp.com/register', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -48,6 +48,7 @@ class Register extends React.Component {
           <div className="measure">
             <fieldset id="register" className="ba b--transparent ph0 mh0">
               <legend className="f1 fw6 ph0 mh0">Register</legend>
+              <form>
               <div className="mt3">
                 <label className="db fw6 lh-copy f6" htmlFor="name">
                   Name
@@ -84,6 +85,7 @@ class Register extends React.Component {
                   onChange={this.onPasswordChange}
                 />
               </div>
+              </form>
               <div className="">
                 <input
                   onClick={this.onSubmitRegister}
