@@ -114,7 +114,7 @@ class App extends Component {
     });
   };
 
-  onSubmitSignin = () => {
+  onButtonSubmit = () => {
   console.log('Button clicked!'); // Add this line
   console.log('Current state:', this.state); // Add this line
 
