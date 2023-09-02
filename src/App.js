@@ -115,6 +115,11 @@ class App extends Component {
   };
 
   onButtonSubmit = () => {
+  console.log('Button clicked!'); // Add this line
+  console.log('Current state:', this.state); // Add this line
+
+  // Rest of your code
+
     this.setState({ IMAGE_URL: this.state.input });
 
     fetch(`https://api.clarifai.com/v2/models/${MODEL_ID}/versions/${MODEL_VERSION_ID}/outputs`, {
@@ -147,6 +152,9 @@ class App extends Component {
   };
 
   onRouteChange = (route) => {
+  console.log('Route changed to:', route); // Add this line
+  // Rest of your code
+
     if (route === 'signout') {
       this.setState({ initialState });
     } else if (route === 'home') {

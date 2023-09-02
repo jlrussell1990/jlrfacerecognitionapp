@@ -17,24 +17,32 @@ class Signin extends Component {
 		this.setState({ signInPassword: event.target.value });
 	};
 
-	onSubmitSignIn = () => {
-		fetch('https://jlrfacerecognitionapp-api-ef3d9411ffd4.herokuapp.com/signin', {
-			method: 'post',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				email: this.state.signInEmail,
-				password: this.state.signInPassword
-			})
-		})
-			.then((response) => response.json())
-			.then((user) => {
-				if (user.id) {
-					// Check for a valid response from the server
-					this.props.loadUser(user);
-					this.props.onRouteChange('home');
-				}
-			});
-	};
+onSubmitSignin = () => {
+  console.log('Submitting signin form...'); // Added this line
+
+  fetch('https://jlrfacerecognitionapp-api-ef3d9411ffd4.herokuapp.com/signin', {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: this.state.signInEmail,
+      password: this.state.signInPassword,
+    }),
+  })
+    .then((response) => response.json())
+    .then((user) => {
+      console.log('Response from server:', user); // Added this line
+
+      if (user.id) {
+        console.log('User id found:', user.id); // Added this line
+        this.props.loadUser(user);
+        this.props.onRouteChange('home');
+      }
+    })
+    .catch((error) => {
+      console.log('Error occurred:', error); // Added this line
+    });
+};
+
 
 	render() {
 		const { onRouteChange } = this.props;
